@@ -50,7 +50,7 @@ class PlanDePruebasController extends Controller
         if($retorno_plan)
         {
             $codigo_verificador = time().'_'.$retorno_plan->id;
-            $enlace = 'http://localhost/proy_tit_gepp/public/ejecucion_plan_pruebas/'.$retorno_plan->id.'/'.$codigo_verificador;
+            $enlace = 'http://maxram.ddns.net/ejecucion_plan_pruebas/'.$retorno_plan->id.'/'.$codigo_verificador;
 
             $retorno_link = Test_Plan_Link::create([
                 'codigo_verificador' => $codigo_verificador,
