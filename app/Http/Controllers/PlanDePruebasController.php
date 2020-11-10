@@ -176,7 +176,7 @@ class PlanDePruebasController extends Controller
                     if(! Order_Test_Level::borrarOrdenCasosPrueba($id)){
                         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
                         return response()->json([
-                            'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
+                            'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                         ]);
                     }
                 }
@@ -191,19 +191,19 @@ class PlanDePruebasController extends Controller
                     if(! $retorno){
                         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
                         return response()->json([
-                            'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
+                            'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                         ]);
                     }
                 }
                 $request->session()->flash('success', 'Se ha registrado el orden de ejecución de los casos de prueba.');
                 return response()->json([
-                    'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
+                    'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                 ]);
             }
         }
         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
         return response()->json([
-            'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
+            'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
         ]);
     }
 }
