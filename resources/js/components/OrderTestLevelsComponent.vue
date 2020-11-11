@@ -47,8 +47,8 @@
         mounted(){
             axios
 
-                .get('http://localhost/proy_tit_gepp/public/casos_de_prueba/get/' + this.id_plan)
-                //.get('http://maxram.ddns.net/casos_de_prueba/get/' + this.id_plan)
+                //.get('http://localhost/proy_tit_gepp/public/casos_de_prueba/get/' + this.id_plan)
+                .get('http://maxram.ddns.net/casos_de_prueba/get/' + this.id_plan)
                 .then(response => (this.myArray = response.data))
         },
         methods: {
