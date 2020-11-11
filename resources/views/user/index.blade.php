@@ -46,11 +46,15 @@
                             <div class="card mt-2 ml-2" style="width: 18rem;">
                                 <img class="card-img-top" src="logos_plan_pruebas/<?php echo(isset($plan->nombre_imagen) ? $plan->nombre_imagen : 'default_logo.jpg')?>">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b>{{ $plan->nombre_plan }}</b></h5>
-                                    <p class="card-text">{{__('Proyecto: '). $plan->nombre_proyecto}} </p>
+                                    <h5 class="card-title"><b>{{__('Proyecto: '). $plan->nombre_proyecto}}</b></h5>
                                     <div class="row mt-2">
                                         <div class="col">
-                                            <a href="{{route('ver_plan_prueba', $plan->id)}}" class="btn btn-primary"> <i class="fas fa-eye"></i> {{__('Ir al plan de pruebas')}}</a>
+                                            <a href="{{route('ver_plan_prueba', $plan->id)}}" class="btn btn-primary"> <i class="fas fa-sign-in-alt" ></i> {{__('Ir al Plan de Pruebas')}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <a href="#" class="btn btn-secondary"> <i class="fas fa-eye"></i> {{__('Vista General del Plan')}}</a>
                                         </div>
                                     </div>
                                     <div class="row mt-2">

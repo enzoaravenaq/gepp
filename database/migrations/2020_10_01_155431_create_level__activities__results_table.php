@@ -16,8 +16,8 @@ class CreateLevelActivitiesResultsTable extends Migration
         Schema::create('level__activities__results', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_test_level');
-            $table->string('actividad');
-            $table->string('respuesta_sistema');
+            $table->string('actividad', 500);
+            $table->string('respuesta_sistema', 500);
             $table->dateTime('deleted')->nullable();
             $table->timestamps();
 

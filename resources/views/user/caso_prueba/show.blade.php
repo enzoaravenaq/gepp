@@ -65,7 +65,7 @@
 
                 <div class="row mt-3">
                     <div class="col-12">
-                        <a class="btn btn-danger" href="{{ route('ver_plan_prueba', $caso_prueba->id_test_plan) }}" role="button"><i class="far fa-times-circle"></i> {{ __('Volver') }}</a>
+                        <a class="btn btn-danger" href="{{ route('ver_plan_prueba', $caso_prueba->id_test_plan) }}" role="button"><i class="fas fa-arrow-left"></i> {{ __('Volver') }}</a>
 
                     </div>
                 </div>

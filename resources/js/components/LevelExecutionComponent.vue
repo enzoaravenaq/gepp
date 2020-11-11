@@ -76,6 +76,8 @@
         },
         mounted() {
             axios
+
+                //.get('http://localhost/proy_tit_gepp/public/ejecucion_prueba/actividades_respuestas/get/' + this.id_caso)
                 .get('http://maxram.ddns.net/ejecucion_prueba/actividades_respuestas/get/' + this.id_caso)
                 .then(response => (this.actividades = response.data))
         },

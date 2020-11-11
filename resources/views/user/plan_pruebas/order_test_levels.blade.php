@@ -14,7 +14,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><h2>{{ __('Ordenar Casos de Prueba para Ejecución') }}</h2></div>
+                    <div class="col-sm-9"><h2>{{ __('Ordenar Casos de Prueba para Ejecución') }}</h2></div>
+                    <div class="col-sm-3">
+                        <a class="btn btn-danger" href="{{ route('ver_plan_prueba', $id_plan) }}" role="button"><i class="fas fa-arrow-left"></i> {{ __('Volver al Plan de Pruebas') }}</a>
+                    </div>
                 </div>
             </div>
             <div class="card-body">

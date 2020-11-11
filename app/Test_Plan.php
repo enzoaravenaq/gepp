@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Test_Plan extends Model
 {
     protected $fillable = [
-        'id_usuario', 'id_enlace_acceso', 'nombre_plan', 'nombre_proyecto', 'nombre_imagen',
+        'id_usuario', 'id_enlace_acceso', 'grupo_proy', 'nombre_proyecto', 'acceso_sistema', 'datos_generales','nombre_imagen',
     ];
 
     public static function getMyPlans($id_usuario)
@@ -46,23 +46,27 @@ class Test_Plan extends Model
         return $plan_de_prueba;
     }
 
-    public static function actualizarPlan($id_plan, $nombre_plan, $nombre_proyecto, $nombre_arch)
+    public static function actualizarPlan($id_plan, $grupo_proy, $nombre_proyecto, $acceso_sist, $datos_generales, $nombre_arch)
     {
         return DB::table('test__plans')
             ->where('id', $id_plan)
             ->update([
-                'nombre_plan' => $nombre_plan,
+                'grupo_proy' => $grupo_proy,
                 'nombre_proyecto' => $nombre_proyecto,
+                'acceso_sistema' => $acceso_sist,
+                'datos_generales' => $datos_generales,
                 'nombre_imagen' => $nombre_arch]);
     }
 
-    public static function actualizarPlanSinImagen($id_plan, $nombre_plan, $nombre_proyecto)
+    public static function actualizarPlanSinImagen($id_plan, $grupo_proy, $nombre_proyecto , $acceso_sist, $datos_generales)
     {
         return DB::table('test__plans')
             ->where('id', $id_plan)
             ->update([
-                'nombre_plan' => $nombre_plan,
-                'nombre_proyecto' => $nombre_proyecto]);
+                'grupo_proy' => $grupo_proy,
+                'nombre_proyecto' => $nombre_proyecto,
+                'acceso_sistema' => $acceso_sist,
+                'datos_generales' => $datos_generales]);
     }
 
     public static function registrarIdEnlace($id_plan, $id_enlace)

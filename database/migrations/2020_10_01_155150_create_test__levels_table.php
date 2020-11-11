@@ -19,7 +19,7 @@ class CreateTestLevelsTable extends Migration
             $table->unsignedBigInteger('id_level_req')->nullable();
             $table->unsignedInteger('ident_caso');
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion', 500);
             $table->string('actores');
             $table->string('ident_req')->nullable();
             $table->dateTime('deleted')->nullable();

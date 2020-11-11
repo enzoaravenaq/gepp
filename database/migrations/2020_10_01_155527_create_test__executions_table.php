@@ -20,9 +20,9 @@ class CreateTestExecutionsTable extends Migration
             $table->string('email');
             $table->integer('puntaje_final')->default(0);
             $table->string('titulo_jugador')->nullable();
+            $table->string('comentario_general', 1000)->nullable();
             $table->dateTime('deteled')->nullable();
             $table->timestamps();
-
 
             $table->foreign('id_test_plan')->references('id')->on('test__plans');
         });

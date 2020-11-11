@@ -17,8 +17,10 @@ class CreateTestPlansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_enlace_acceso')->nullable();
-            $table->string('nombre_plan');
+            $table->string('grupo_proy');
             $table->string('nombre_proyecto');
+            $table->string('acceso_sistema');
+            $table->string('datos_generales', 500);
             $table->string('nombre_imagen')->nullable();
             $table->dateTime('deleted')->nullable();
             $table->timestamps();

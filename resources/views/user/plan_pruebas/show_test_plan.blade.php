@@ -27,6 +27,8 @@
                 </div>
         @endif
     </div>
+
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -40,28 +42,55 @@
             </div>
             <div class="card-body">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <h5 class="card-title">{{__('Datos plan de pruebas')}}</h5>
-                            </div>
-                            <div class="row">
-                                <p class="card-text">{{__('Nombre plan de pruebas: '.$plan_de_prueba->nombre_plan)}}</p>
-                            </div>
-                            <div class="row">
-                                <p class="card-text">{{__('Nombre proyecto: '.$plan_de_prueba->nombre_proyecto)}}</p>
-                            </div>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <h4>Instrucciones de configuración del plan de pruebas</h4>
+                        <ul>
+                            <li> Primero crear todos los Casos de Prueba necesarios para el plan.</li>
+                            <li> Opcionalmente si debe editar o eliminar un Caso de Prueba, hacerlo en segunda instancia.</li>
+                            <li> Una vez listos los Casos de Prueba, acceder a "Señalar orden de ejecución" y ordenar los Casos de Prueba para la ejecución de los Testers.</li>
+                            <li> Finalmente copie el "Enlace de Acceso a la Prueba" y dejelo a disposición de los Testers.</li>
+                        </ul>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
 
-                            @if(isset($enlace_plan->enlace))
-                                <div class="row input-group input-group-sm mb-3 mt-2">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="icono_link"><i class="fas fa-link"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" value="{{__($enlace_plan->enlace)}}" aria-label="Small" aria-describedby="icono_link" disabled>
-                                </div>
+                    <h5 class="card-title"><b>{{__('Datos plan de pruebas')}}</b></h5>
+                    <div class="row">
+                        <div class="col">
+                            <dt class="col-sm-6">{{__('Grupo de Trabajo: ')}}</dt>
+                            <dd class="col-sm-9">{{__($plan_de_prueba->grupo_proy)}}</dd>
+
+                            <dt class="col-sm-6">{{__('Nombre del Proyecto: ')}}</dt>
+                            <dd class="col-sm-9">
+                                <p>{{__($plan_de_prueba->nombre_proyecto)}}</p>
+                            </dd>
+
+                            <dt class="col-sm-6">{{__('Forma de Acceso al Sistema: ')}}</dt>
+                            <dd class="col-sm-9">
+                                <p>{{__($plan_de_prueba->acceso_sistema)}}</p>
+                            </dd>
+
+                            <dt class="col-sm-6">{{__('Datos Generales: ')}}</dt>
+                            <dd class="col-sm-9">
+                                <p>{{__($plan_de_prueba->datos_generales)}}</p>
+                            </dd>
+
+                        @if(isset($enlace_plan->enlace))
+
+                            <dt class="col-sm-6">{{__('Enlace Acceso a la Prueba: ')}}</dt>
+                              <dd class="col-sm-9">
+                                 <div class="input-group input-group-sm mb-3 mt-2">
+                                     <div class="input-group-prepend">
+                                         <span class="input-group-text" id="icono_link"><i class="fas fa-link"></i></span>
+                                     </div>
+                                        <input type="text" class="form-control" value="El link estará disponible para el día de ejecución del plan de pruebas" aria-label="Small" aria-describedby="icono_link" disabled>
+                                        <!--<input type="text" class="form-control" value="{{__($enlace_plan->enlace)}}" aria-label="Small" aria-describedby="icono_link" disabled>-->
+                                 </div>
+                              </dd>
                             @endif
                         </div>
-                        <div class="col-md">
+                        <div class="col col-lg-3">
                             <img src="{{__ (isset($plan_de_prueba->nombre_imagen)) ? URL::asset('logos_plan_pruebas/'.$plan_de_prueba->nombre_imagen) : URL::asset('logos_plan_pruebas/default_logo.jpg')}}" class="img-thumbnail" style="width:150px;height:150px;">
                         </div>
                     </div>
@@ -92,24 +121,15 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><b>{{ 'P'.$caso->ident_caso.'-'.$caso->nombre}}</b></h5>
                                         <p class="card-text">{{ 'Descripción: '.$caso->descripcion }}</p>
-                                        <div class="row">
-                                            <div class="col mt-1">
-                                                <a href="{{route('ver_caso_prueba', $caso->id)}}" class="btn btn-primary"> <i class="far fa-eye"></i> {{__('Ver')}}</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col mt-1">
-                                                <a href="{{route('editar_caso_prueba', [$caso->id, $plan_de_prueba->id])}}" class="btn btn-warning"> <i class="far fa-edit"></i> {{__('Editar')}}</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col mt-1">
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal_{{ $key }}">
-                                                    <i class="fas fa-trash"></i>
-                                                    {{__('Eliminar')}}
-                                                </button>
-                                            </div>
-                                        </div>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{{route('ver_caso_prueba', $caso->id)}}" class="btn btn-primary btn-sm"> <i class="far fa-eye"></i> {{__('Ver')}}</a>
+                                        <a href="{{route('editar_caso_prueba', [$caso->id, $plan_de_prueba->id])}}" class="btn btn-warning btn-sm"> <i class="far fa-edit"></i> {{__('Editar')}}</a>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal_{{ $key }}">
+                                            <i class="fas fa-trash"></i>
+                                            {{__('Eliminar')}}
+                                        </button>
                                     </div>
                                 </div>
 

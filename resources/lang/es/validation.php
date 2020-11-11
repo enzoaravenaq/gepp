@@ -146,6 +146,22 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email' => 'Email/Correo Electrónico',
+        'password'  => 'Password/Contraseña',
+        'name'  =>  'Name/Nombre',
+        'password_confirmation' => 'Confirm Password/ Confirmación de Constraseña',
+        'test_group' => 'Grupo de Trabajo',
+        'project_name' => 'Nombre del Proyecto',
+        'project_access' => 'Forma de Acceso al Sistema',
+        'project_info' => 'Datos Generales',
+        'project_icon' => 'Logo del Proyecto',
+        'level_id' => 'Identificador de la Prueba',
+        'level_name' => 'Nombre de la Prueba',
+        'level_actors' => 'Actor(es)',
+        'level_sist_req' => 'Identificador(es) requerimiento(s)',
+        'level_pre_condition' => 'Pre-condición',
+        'level_description' => 'Descripción de la prueba'
+    ],
 
 ];

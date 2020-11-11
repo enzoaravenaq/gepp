@@ -34,6 +34,8 @@
         },
         mounted() {
             axios
+
+                //.get('http://localhost/proy_tit_gepp/public/actividades_respuestas/get/' + this.id_caso)
                 .get('http://maxram.ddns.net/actividades_respuestas/get/' + this.id_caso)
                 .then(response => (this.actividades = response.data))
         },

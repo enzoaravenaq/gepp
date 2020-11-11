@@ -21,92 +21,90 @@
             <div class="card-body">
                 <form action={{ route('actualizar_caso_prueba', [$caso_prueba->id, $id_plan]) }} method="POST" >
                     @csrf
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <div class="input-group input-group-sm">
-                                <label for="level_id">{{__('Identificador de la prueba:')}}</label>
-                                <div class="input-group-prepend ml-1">
-                                    <span class="input-group-text form-control-sm" id="addon_level_id"><b>{{__('P')}}</b></span>
-                                </div>
-                                <input id="level_id" name="level_id" type="number" min="0" class="form-control-sm" aria-describedby="addon_level_id"
-                                       value="{{$caso_prueba->ident_caso}}">
+                    <div class="form-group mx-sm-3 row">
+                        <div class="input-group col-sm-10">
+                            <label for="level_id" class="col-sm-2">Identificador de la prueba:</label>
+                            <div class="input-group-prepend-sm">
+                                <span class="input-group-text"  id="addon_level_id">P</span>
                             </div>
-
-                            @error('level_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <input id="level_id" name="level_id" type="number" min="1" class="form-control" aria-describedby="addon_level_id" placeholder="Ej: P1, P2, P3, ..."
+                                   value="{{$caso_prueba->ident_caso}}">
                         </div>
+                        @error('level_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="level_name">{{__('Nombre de la prueba:')}} </label>
-                            <input id="level_name" name="level_name" type="text" class="form-control-sm" value="{{$caso_prueba->nombre}}">
-
-                            @error('level_name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3 row">
+                        <label for="level_name" class="col-sm-2 col-form-label">Nombre de la prueba:</label>
+                        <div class="col-sm-10">
+                            <input id="level_name" name="level_name" type="text" class="form-control" placeholder="Ej: Log-in, Registro de Compra, Agregar Amigo, ..."
+                                   value="{{$caso_prueba->nombre}}">
                         </div>
+                        @error('level_name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="level_actors">{{__('Actor(es):')}} </label>
-                            <input id="level_actors" name="level_actors" type="text" class="form-control-sm" value="{{$caso_prueba->actores}}">
-
-                            @error('level_actors')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3 row">
+                        <label for="level_actors" class="col-sm-2 col-form-label">Actor(es):</label>
+                        <div class="col-sm-10">
+                            <input id="level_actors" name="level_actors" type="text" class="form-control" placeholder="Ej: Administrador, Cajero, Abogado, ..."
+                                   value="{{$caso_prueba->actores}}">
                         </div>
+                        @error('level_actors')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="level_sist_req">{{__('Identificador requerimiento:')}}  </label>
-                            <input id="level_sist_req" name="level_sist_req" type="text" class="form-control-sm" value="{{$caso_prueba->ident_req}}">
-
-                            @error('level_sist_req')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3 row">
+                        <label for="level_sist_req" class="col-sm-2">Identificador(es) requerimiento(s):</label>
+                        <div class="col-sm-10">
+                            <input id="level_sist_req" name="level_sist_req" type="text" class="form-control" placeholder="Ej: RF-01, RF02, RNF-01, ..."
+                                   value="{{$caso_prueba->ident_req}}">
                         </div>
+
+                        @error('level_sist_req')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="level_pre_condition">{{__('Pre-condición:')}} </label>
+                    <div class="form-group mx-sm-3  row">
+                        <label for="level_pre_condition" class="col-sm-2 col-form-label">Pre-condición:</label>
+                        <div class="col-sm-10">
                             @if(isset($select_casos))
-                                <select class="custom-select-sm form-control-sm" id="level_pre_condition" name="level_pre_condition">
+                                <select class="custom-select-sm form-control col-sm-4" id="level_pre_condition" name="level_pre_condition">
                                     @foreach($select_casos as $caso)
                                         @if(isset($caso_prueba->id_level_req) && $caso->id === $caso_prueba->id_level_req)
                                             <option selected value="{{$caso->id}}">{{$caso->nombre_en_select}}</option>
-                                            @elseif( !isset($caso_prueba->id_level_req) && $caso->id === -1)
-                                                <option selected value="{{$caso->id}}">{{$caso->nombre_en_select}}</option>
-                                            @else
-                                                <option value="{{$caso->id}}">{{$caso->nombre_en_select}}</option>
+                                        @elseif( !isset($caso_prueba->id_level_req) && $caso->id === -1)
+                                            <option selected value="{{$caso->id}}">{{$caso->nombre_en_select}}</option>
+                                        @else
+                                            <option value="{{$caso->id}}">{{$caso->nombre_en_select}}</option>
                                         @endif
                                     @endforeach
                                 </select>
-                                    @else
-                                        <select class="custom-select-sm form-control-sm" id="level_pre_condition" name="level_pre_condition">
-                                            <option selected value="-1">No hay casos de prueba</option>
-                                        </select>
+                            @else
+                                <select class="custom-select-sm form-control col-sm-4" id="level_pre_condition" name="level_pre_condition">
+                                    <option selected value="-1">No hay casos de prueba</option>
+                                </select>
                             @endif
-                            @error('level_pre_condition')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                         </div>
+                        @error('level_pre_condition')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="level_description">{{__('Descripción de la prueba:')}} </label>
-                            <textarea id="level_description" name="level_description" class="form-control"> {{$caso_prueba->descripcion}} </textarea>
-
-                            @error('level_description')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3  row">
+                        <label for="level_description" class="col-sm-2 col-form-label">Descripción de la prueba: </label>
+                        <div class="col-sm-10">
+                            <textarea id="level_description" name="level_description" class="form-control" placeholder="Descripción de la Prueba">{{$caso_prueba->descripcion}} </textarea>
                         </div>
+                        @error('level_description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+
 
                     <activity-result-edit-form-component v-bind:id_caso='{!! $id !!}'></activity-result-edit-form-component>
 

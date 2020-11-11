@@ -26,8 +26,10 @@ class PlanDePruebasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'test_name' => 'required|max:191',
+            'test_group' => 'required|max:191',
             'project_name' => 'required|max:191',
+            'project_access'  => 'required|max:191',
+            'project_info'  => 'required|max:500',
             'project_icon' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
@@ -42,14 +44,17 @@ class PlanDePruebasController extends Controller
 
         $retorno_plan = Test_Plan::create([
             'id_usuario' => auth()->id(),
-            'nombre_plan' => $request->test_name,
+            'grupo_proy' => $request->test_group,
             'nombre_proyecto' => $request->project_name,
+            'acceso_sistema' => $request->project_access,
+            'datos_generales' => $request->project_info,
             'nombre_imagen' => $name_file
         ]);
 
         if($retorno_plan)
         {
             $codigo_verificador = time().'_'.$retorno_plan->id;
+            //$enlace = 'http://localhost/proy_tit_gepp/public/ejecucion_plan_pruebas/'.$retorno_plan->id.'/'.$codigo_verificador;
             $enlace = 'http://maxram.ddns.net/ejecucion_plan_pruebas/'.$retorno_plan->id.'/'.$codigo_verificador;
 
             $retorno_link = Test_Plan_Link::create([
@@ -100,8 +105,10 @@ class PlanDePruebasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'test_name' => 'required|max:191',
+            'test_group' => 'required|max:191',
             'project_name' => 'required|max:191',
+            'project_access'  => 'required|max:191',
+            'project_info'  => 'required|max:500',
             'project_icon' => 'nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
 
@@ -113,7 +120,7 @@ class PlanDePruebasController extends Controller
             $name_file = time().$file->getClientOriginalName();
             $file->move(public_path().'/logos_plan_pruebas/', $name_file);
 
-            if(Test_Plan::actualizarPlan($id, $request->test_name, $request->project_name, $name_file)){
+            if(Test_Plan::actualizarPlan($id, $request->test_group, $request->project_name, $request->project_access, $request->project_info , $name_file)){
                 return redirect()->route('ver_plan_prueba', $id)
                     ->with('success', 'Plan de pruebas modificado satisfactoriamente.');
             }
@@ -121,7 +128,7 @@ class PlanDePruebasController extends Controller
                 ->with('error', 'Plan de pruebas no se pudo modificar.');
         }
 
-        if(Test_Plan::actualizarPlanSinImagen($id, $request->test_name, $request->project_name)){
+        if(Test_Plan::actualizarPlanSinImagen($id, $request->test_group, $request->project_name, $request->project_access, $request->project_info)){
             return redirect()->route('ver_plan_prueba', $id)
                 ->with('success', 'Plan de pruebas modificado satisfactoriamente.');
         }
@@ -176,6 +183,7 @@ class PlanDePruebasController extends Controller
                     if(! Order_Test_Level::borrarOrdenCasosPrueba($id)){
                         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
                         return response()->json([
+                            //'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
                             'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                         ]);
                     }
@@ -191,18 +199,21 @@ class PlanDePruebasController extends Controller
                     if(! $retorno){
                         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
                         return response()->json([
+                            //'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
                             'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                         ]);
                     }
                 }
                 $request->session()->flash('success', 'Se ha registrado el orden de ejecución de los casos de prueba.');
                 return response()->json([
+                    //'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
                     'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
                 ]);
             }
         }
         $request->session()->flash('error', 'No se pudo registar el orden de ejecución de los casos de prueba');
         return response()->json([
+            //'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
             'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
         ]);
     }

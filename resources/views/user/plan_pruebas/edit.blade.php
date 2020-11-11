@@ -20,36 +20,65 @@
             <div class="card-body">
                 <form action={{ route('actualizar_plan_prueba', $id) }} method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="test_name">Nombre plan de pruebas:</label>
-                            <input id="test_name" name="test_name" type="text" class="form-control-sm" value="{{$plan_a_editar->nombre_plan}}">
-
-                            @error('test_name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3 row">
+                        <label for="test_group" class="col-sm-2 col-form-label">Grupo de Trabajo:</label>
+                        <div class="col-sm-10">
+                            <input id="test_group" name="test_group" type="text" class="form-control" placeholder="Ej: Grupo 1, Grupo 2, ..."
+                                   value="{{$plan_a_editar->grupo_proy}}">
                         </div>
-                    </div>
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="project_name">Nombre del proyecto:</label>
-                            <input id="project_name" name="project_name" type="text" class="form-control-sm" value="{{$plan_a_editar->nombre_proyecto}}">
 
-                            @error('project_name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        @error('test_group')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="form-group row text-left">
-                        <div class="col-sm">
-                            <label for="project_icon">Logo del proyecto:</label>
-                            <input type="file" class="form-control-file" id="project_icon" name="project_icon">
 
-                            @error('project_icon')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="form-group mx-sm-3 row">
+                        <label for="project_name" class="col-sm-2 col-form-label">Nombre del proyecto:</label>
+                        <div class="col-sm-10">
+                            <input id="project_name" name="project_name" type="text" class="form-control" placeholder="Ej: Gepp, Facebook, Uber, ..."
+                                   value="{{$plan_a_editar->nombre_proyecto}}">
                         </div>
+
+                        @error('project_name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
+
+                    <div class="form-group mx-sm-3 row">
+                        <label for="project_access" class="col-sm-2 col-form-label">Forma de Acceso al Sistema:</label>
+                        <div class="col-sm-10">
+                            <input id="project_access" name="project_access" type="text" class="form-control" placeholder="Ej: URL o Implementación Local"
+                                   value="{{$plan_a_editar->acceso_sistema}}">
+                        </div>
+
+                        @error('project_access')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mx-sm-3 row">
+                        <label for="project_info" class="col-sm-2 col-form-label">Datos Generales:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="project_info" name="project_info" rows="3" placeholder="Ej: Información de acceso al sistema, credenciales, etc">{{$plan_a_editar->datos_generales}}</textarea>
+                        </div>
+
+                        @error('project_info')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mx-sm-3 row">
+                        <label for="project_icon" class="col-sm-2 col-form-label">Logo del proyecto:</label>
+                        <div class="col-sm-3 ">
+                            <input id="project_icon" name="project_icon" type="file" class="form-control-sm" placeholder="Ej: Información de acceso al sistema, credenciales, etc">
+                        </div>
+
+                        @error('project_icon')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+
                     <div class="form-group row">
                         <div class="col-12">
                             <button id="btn_submit" class="btn btn-primary" type="submit"> <i class="fas fa-save"></i> {{ __('Guardar') }}</button>
