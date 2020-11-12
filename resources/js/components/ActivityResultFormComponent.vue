@@ -10,7 +10,7 @@
                                     X
                                 </span>
 
-                <h4 class="card-title"> Actividad y Respuesta del Sistema #{{index +1}}</h4>
+                <h4 class="card-title"> Actividad y Respuesta del Sistema #{{index +1}} <span style="color: #ed1b24">*</span></h4>
 
                 <div class="actividad-form">
                     <textarea name= "actividades[act][]" v-model="actividad.activ" class="form-control" placeholder="Actividad"></textarea>

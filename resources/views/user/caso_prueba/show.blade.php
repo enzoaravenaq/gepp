@@ -61,6 +61,7 @@
                             </div>
                         </div>
                     </div>
+                    <?php $i++;?>
                 @endforeach
 
                 <div class="row mt-3">

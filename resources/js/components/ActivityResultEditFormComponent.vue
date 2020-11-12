@@ -10,7 +10,7 @@
                                     X
                                 </span>
 
-                <h4 class="card-title"> Actividad y Respuesta del Sistema #{{index +1}}</h4>
+                <h4 class="card-title"> Actividad y Respuesta del Sistema #{{index +1}} <span style="color: #ed1b24">*</span></h4>
 
                 <div class="actividad-form">
                     <textarea name= "actividades[act][]" v-model="actividad.actividad" class="form-control" placeholder="Actividad"></textarea>
@@ -20,6 +20,7 @@
         </div>
     </div>
 </template>
+
 
 <script>
     export default {
@@ -35,8 +36,8 @@
         mounted() {
             axios
 
-                //.get('http://localhost/proy_tit_gepp/public/actividades_respuestas/get/' + this.id_caso)
-                .get('http://maxram.ddns.net/actividades_respuestas/get/' + this.id_caso)
+                .get('http://localhost/proy_tit_gepp/public/actividades_respuestas/get/' + this.id_caso)
+                //.get('http://maxram.ddns.net/actividades_respuestas/get/' + this.id_caso)
                 .then(response => (this.actividades = response.data))
         },
         methods: {

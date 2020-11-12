@@ -19,11 +19,18 @@
                 </div>
             </div>
             <div class="card-body">
+                <div class="alert alert-warning alert-dismissible fade show text-left" role="alert">
+                    Los campos marcados con <span style="color: #ed1b24">*</span> son obligatorios.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
                 <form action={{ route('guardar_caso_prueba', $id) }} method="POST" >
                     @csrf
                     <div class="form-group mx-sm-3 row">
                         <div class="input-group col-sm-10">
-                            <label for="level_id" class="col-sm-2">Identificador de la prueba:</label>
+                            <label for="level_id" class="col-sm-2">Identificador de la prueba <span style="color: #ed1b24">*</span></label>
                             <div class="input-group-prepend-sm">
                                 <span class="input-group-text"  id="addon_level_id">P</span>
                             </div>
@@ -35,7 +42,7 @@
                     </div>
 
                     <div class="form-group mx-sm-3 row">
-                        <label for="level_name" class="col-sm-2 col-form-label">Nombre de la prueba:</label>
+                        <label for="level_name" class="col-sm-2 col-form-label">Nombre del caso <span style="color: #ed1b24">*</span></label>
                         <div class="col-sm-10">
                             <input id="level_name" name="level_name" type="text" class="form-control" placeholder="Ej: Log-in, Registro de Compra, Agregar Amigo, ...">
                         </div>
@@ -45,7 +52,7 @@
                     </div>
 
                     <div class="form-group mx-sm-3 row">
-                        <label for="level_actors" class="col-sm-2 col-form-label">Actor(es):</label>
+                        <label for="level_actors" class="col-sm-2 col-form-label">Actor(es) <span style="color: #ed1b24">*</span></label>
                         <div class="col-sm-10">
                             <input id="level_actors" name="level_actors" type="text" class="form-control" placeholder="Ej: Administrador, Cajero, Abogado, ...">
                         </div>
@@ -55,7 +62,7 @@
                     </div>
 
                     <div class="form-group mx-sm-3 row">
-                        <label for="level_sist_req" class="col-sm-2">Identificador(es) requerimiento(s):</label>
+                        <label for="level_sist_req" class="col-sm-2">Identificador(es) requerimiento(s) <span style="color: #ed1b24">*</span></label>
                         <div class="col-sm-10">
                             <input id="level_sist_req" name="level_sist_req" type="text" class="form-control" placeholder="Ej: RF-01, RF02, RNF-01, ...">
                         </div>
@@ -86,7 +93,7 @@
                     </div>
 
                     <div class="form-group mx-sm-3  row">
-                        <label for="level_description" class="col-sm-2 col-form-label">Descripción de la prueba: </label>
+                        <label for="level_description" class="col-sm-2 col-form-label">Descripción de la prueba <span style="color: #ed1b24">*</span></label>
                         <div class="col-sm-10">
                             <textarea id="level_description" name="level_description" class="form-control" placeholder="Descripción de la Prueba"></textarea>
                         </div>

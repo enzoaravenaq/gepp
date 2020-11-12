@@ -29,6 +29,25 @@ class Test_Level extends Model
         return $casos_prueba;
     }
 
+    public static function getEditSelectPlanLevels($id, $id_plan)
+    {
+        $casos_prueba = DB::table('test__levels')
+            ->selectRaw( 'id, CONCAT("P", ident_caso, "-", nombre) as nombre_en_select')
+            ->where([
+                ['id', '!=', $id],
+                ['id_test_plan', '=', $id_plan],
+                ['deleted', '=', NULL],
+            ])->get();
+
+        $obj = new \stdClass();
+        $obj->id = -1;
+        $obj->nombre_en_select = 'Seleccione un caso de prueba';
+
+        $casos_prueba[] = $obj;
+
+        return $casos_prueba;
+    }
+
     public static function getTestPlanLevels($id_plan)
     {
         $casos_prueba = DB::table('test__levels')

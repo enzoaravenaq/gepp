@@ -105,7 +105,7 @@ class CasoDePruebaController extends Controller
     public function edit($id, $id_plan)
     {
         $caso_prueba = Test_Level::getTestLevel($id);
-        $select_casos = Test_Level::getSelectPlanLevels($id_plan);
+        $select_casos = Test_Level::getEditSelectPlanLevels($id,$id_plan);
 
         return view('user.caso_prueba.edit')
             ->with(compact('caso_prueba'))

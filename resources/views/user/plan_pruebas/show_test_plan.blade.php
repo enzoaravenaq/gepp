@@ -84,8 +84,8 @@
                                      <div class="input-group-prepend">
                                          <span class="input-group-text" id="icono_link"><i class="fas fa-link"></i></span>
                                      </div>
-                                        <input type="text" class="form-control" value="El link estará disponible para el día de ejecución del plan de pruebas" aria-label="Small" aria-describedby="icono_link" disabled>
-                                        <!--<input type="text" class="form-control" value="{{__($enlace_plan->enlace)}}" aria-label="Small" aria-describedby="icono_link" disabled>-->
+                                        <!--<input type="text" class="form-control" value="El link estará disponible para el día de ejecución del plan de pruebas" aria-label="Small" aria-describedby="icono_link" disabled>-->
+                                        <input type="text" class="form-control" value="{{__($enlace_plan->enlace)}}" aria-label="Small" aria-describedby="icono_link" disabled>
                                  </div>
                               </dd>
                             @endif
