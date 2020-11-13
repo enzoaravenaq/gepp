@@ -105,7 +105,7 @@
                     <div class="form-group mx-sm-3  row">
                         <label for="level_description" class="col-sm-2 col-form-label">Descripción de la prueba <span style="color: #ed1b24">*</span></label>
                         <div class="col-sm-10">
-                            <textarea id="level_description" name="level_description" class="form-control" placeholder="Descripción de la Prueba">{{$caso_prueba->descripcion}} </textarea>
+                            <textarea maxlength="500" id="level_description" name="level_description" class="form-control" placeholder="Descripción de la Prueba">{{$caso_prueba->descripcion}} </textarea>
                         </div>
                         @error('level_description')
                         <div class="alert alert-danger">{{ $message }}</div>

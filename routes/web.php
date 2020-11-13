@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/user/plan_pruebas/vista_general/{id}', 'PlanDePruebasController@vistaGeneralPlanPruebas')->name('vista_general_plan_pruebas');
 Route::get('/home', 'PlanDePruebasController@index')->name('index');
 Route::get('/user/plan_pruebas/crear', 'PlanDePruebasController@create')->name('crear_plan_prueba');
 Route::get('/user/plan_pruebas/editar/{id}', 'PlanDePruebasController@edit')->name('editar_plan_prueba');
@@ -30,6 +31,7 @@ Route::post('/user/plan_pruebas/actualizar/{id}', 'PlanDePruebasController@updat
 Route::get('/user/plan_pruebas/{id}/ver', ['as' => 'ver_plan_prueba', 'uses' => 'PlanDePruebasController@show']);
 Route::get('/user/plan_pruebas/ordenar_casos_prueba/{id}', 'PlanDePruebasController@ordenarCasosPrueba')->name('ordenar_casos_prueba');
 Route::get('/user/plan_pruebas/eliminar/{id}', 'PlanDePruebasController@destroy')->name('borrar_plan_prueba');
+
 
 Route::get('/user/caso_prueba/crear/{id}', 'CasoDePruebaController@create')->name('crear_caso_prueba');
 Route::get('/user/caso_prueba/editar/{id}/{id_plan}', 'CasoDePruebaController@edit')->name('editar_caso_prueba');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Level_Activities_Result;
 use App\Order_Test_Level;
 use App\Test_Level;
 use App\Test_Plan;
@@ -216,5 +217,39 @@ class PlanDePruebasController extends Controller
             //'url' => 'http://localhost/proy_tit_gepp/public/user/plan_pruebas/'.$id.'/ver'
             'url' => 'http://maxram.ddns.net/user/plan_pruebas/'.$id.'/ver'
         ]);
+    }
+
+    public function vistaGeneralPlanPruebas($id)
+    {
+        $id_usuario = auth()->id();
+        $plan_de_prueba = Test_Plan::getPlanUsuario($id, $id_usuario);
+
+        if($plan_de_prueba)
+        {
+            $casos_de_prueba = Test_Level::getTestPlanLevels($id);
+
+
+            foreach ($casos_de_prueba as $caso)
+            {
+                $caso->actividades = Level_Activities_Result::getLevelActities($caso->id);
+
+                if($caso->id_level_req != NULL)
+                {
+                    $datos_pre_condicion = NULL;
+                    $datos_pre_condicion = Test_Level::getIdentYNombrePreCondicion($caso->id_level_req);
+                    if($datos_pre_condicion)
+                    {
+                        $caso->pre_condicion = 'P'.$datos_pre_condicion->ident_caso.'-'.$datos_pre_condicion->nombre;
+                    }
+                }
+            }
+
+            $enlace_plan = Test_Plan_Link::getPlanLink($plan_de_prueba->id_enlace_acceso);
+
+            return view('user.plan_pruebas.general_view_test_plan')
+                ->with(compact('plan_de_prueba'))
+                ->with(compact('casos_de_prueba'))
+                ->with(compact('enlace_plan'));
+        }
     }
 }

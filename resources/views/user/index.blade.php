@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col">
-                                            <a href="#" class="btn btn-secondary"> <i class="fas fa-eye"></i> {{__('Vista General del Plan')}}</a>
+                                            <a href="{{ route('vista_general_plan_pruebas', $plan->id) }}" class="btn btn-secondary"> <i class="fas fa-eye"></i> {{__('Vista General del Plan')}}</a>
                                         </div>
                                     </div>
                                     <div class="row mt-2">

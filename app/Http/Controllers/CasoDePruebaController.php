@@ -27,7 +27,7 @@ class CasoDePruebaController extends Controller
         $request->validate([
            'level_id' => 'required|numeric|min:0',
            'level_name' => 'required|max:191',
-           'level_description' => 'required|max:191',
+           'level_description' => 'required|max:500',
            'level_actors' => 'required|max:191',
            'level_sist_req' => 'required|max:191'
         ]);
@@ -119,7 +119,7 @@ class CasoDePruebaController extends Controller
         $request->validate([
             'level_id' => 'required|numeric|min:0',
             'level_name' => 'required|max:191',
-            'level_description' => 'required|max:191',
+            'level_description' => 'required|max:500',
             'level_actors' => 'required|max:191',
             'level_sist_req' => 'required|max:191'
         ]);

@@ -51,7 +51,6 @@ class Test_Level extends Model
     public static function getTestPlanLevels($id_plan)
     {
         $casos_prueba = DB::table('test__levels')
-            ->select( 'id', 'ident_caso', 'nombre', 'descripcion')
             ->where([
                 ['id_test_plan', '=', $id_plan],
                 ['deleted', '=', NULL],

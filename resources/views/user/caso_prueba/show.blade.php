@@ -53,11 +53,11 @@
                         <div class="card-body text-left">
                             <div class="row">
                                 <dt class="col-sm-3">{{__('Actividad: ')}}</dt>
-                                <dd class="col-sm-4 text-left">{{__($actividad->actividad)}}</dd>
+                                <dd class="col-sm text-left">{{__($actividad->actividad)}}</dd>
                             </div>
                             <div class="row">
                                 <dt class="col-sm-3">{{__('Respuesta Sistema: ')}}</dt>
-                                <dd class="col-sm-4 text-left">{{__($actividad->respuesta_sistema)}}</dd>
+                                <dd class="col-sm text-left">{{__($actividad->respuesta_sistema)}}</dd>
                             </div>
                         </div>
                     </div>

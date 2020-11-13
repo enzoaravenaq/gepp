@@ -31,6 +31,8 @@ class ActividadRespuestaController extends Controller
                 foreach ($actividades as $act)
                 {
                     $act->titulo = 'Actividad y Respuesta del Sistema #'.$i;
+                    $act->seleccionAct = NULL;
+                    $act->seleccionResp = NULL;
                     $i++;
                 }
 

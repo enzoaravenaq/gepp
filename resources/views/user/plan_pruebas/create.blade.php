@@ -56,7 +56,7 @@
                     <div class="form-group mx-sm-3 row">
                         <label for="project_info" class="col-sm-2 col-form-label">Datos Generales:</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="project_info" name="project_info" rows="3" placeholder="Ej: Información de acceso al sistema, credenciales, etc"></textarea>
+                            <textarea maxlength="500" class="form-control" id="project_info" name="project_info" rows="3" placeholder="Ej: Información de acceso al sistema, credenciales, etc"></textarea>
                         </div>
 
                         @error('project_info')
